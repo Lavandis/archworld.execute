@@ -1,0 +1,18 @@
+# Local packaging candidate only. Resolve NOTICE.md before public release.
+pkgname=archworld.execute
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='Unix to Arch character music animation for a real terminal'
+arch=('any')
+license=('MIT' 'LicenseRef-ThirdParty')
+depends=('python' 'tmux' 'mpv')
+conflicts=('world-execute')
+source=("archworld.execute-${pkgver}.tar.gz")
+# Packaging script replaces this with the actual SHA-256 before building.
+sha256sums=('REPLACE_WITH_ARCHIVE_SHA256')
+
+package() {
+  cd "$srcdir/archworld.execute-$pkgver"
+  make DESTDIR="$pkgdir" PREFIX=/usr install
+  install -Dm644 NOTICE.md "$pkgdir/usr/share/licenses/$pkgname/NOTICE.md"
+}

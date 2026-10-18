@@ -1,0 +1,6 @@
+audio/
+data/*.gz
+data/*.tmp
+dist/
+__pycache__/
+*.pyc
